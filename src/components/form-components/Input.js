@@ -1,9 +1,9 @@
 const Input = (props) => {
-    const { name, value, title, type, handleChange, placeholder } = props;
+    const { name, value, title, type, handleChange, placeholder, className, errorDiv, errorMsg } = props;
     return (
         <div className="mb-3">
             {
-                type === 'text' && (
+                type !== 'hidden' && (
                     <label htmlFor={name} className="form-label">
                         {title}
                     </label>
@@ -13,12 +13,13 @@ const Input = (props) => {
             <input     
                 onChange={handleChange}
                 type={type} 
-                className="form-control"
+                className={`form-control ${className}`}
                 id={name}
                 name={name}
                 value={value}
                 placeholder={placeholder}
             />
+            <div className={errorDiv}>{errorMsg}</div>
         </div>
     )
 }
