@@ -2,6 +2,7 @@ import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import { Movies, Home, Admin, OneMovie, Genres, OneGenre, EditMovie, Login } from './components';
+import GraphQL from './components/GraphQL';
 
 export default class App extends Component {
   constructor(props) {
@@ -61,6 +62,11 @@ export default class App extends Component {
         label: 'Manage Catalogue',
         path: '/admin',
         authorized: this.state.jwt ? false : true
+      },
+      {
+        label: 'GraphQL',
+        path: '/graphql',
+        authorized: false
       }
     ];
   
@@ -104,7 +110,10 @@ export default class App extends Component {
   
                   <Route path="/genres">
                     <Genres />
-                  </Route>        
+                  </Route>   
+                  <Route path="/graphql">
+                    <GraphQL />
+                  </Route>       
   
                   <Route 
                     path="/admin/movie/:id" 
